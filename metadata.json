@@ -1,6 +1,0 @@
-{
-  "name": "FF CLUB BD",
-  "description": "Free Fire Esports Tournament Platform for Bangladesh. Join CS Rank, Duo, and Squad matches, track winnings, and manage your wallet.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
