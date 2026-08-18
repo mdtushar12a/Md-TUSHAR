@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FF CLUB BD - eSports Gaming Tournament & Top Up</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090D14',
+                        screenDark: '#0C101B',
+                        cardBg: '#131A27',
+                        cardNavy: '#131C2E',
+                        cardBorder: '#1F2B3E',
+                        innerDark: '#0E1420',
+                        cyanAccent: '#00E5FF',
+                        yellowAccent: '#FACC15',
+                        goldYellow: '#F59E0B',
+                        fieryRed: '#E50914',
+                        greenStatus: '#16A34A',
+                        emeraldGreen: '#10B981',
+                        bKashPink: '#E2136E',
+                        nagadOrange: '#F7931E',
+                        rocketPurple: '#8C3494',
+                        textMuted: '#8FA1B8',
+                        textLight: '#E2E8F0'
+                    },
+                    fontFamily: {
+                        sans: ['Rajdhani', 'Hind Siliguri', 'sans-serif'],
+                        bangla: ['Hind Siliguri', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Hind Siliguri', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #05070B;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            user-select: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .mode-glow-br { box-shadow: inset 0 0 30px rgba(245, 158, 11, 0.25); }
+        .mode-glow-pro { box-shadow: inset 0 0 30px rgba(234, 179, 8, 0.25); }
+        .mode-glow-surv { box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.25); }
+        .mode-glow-cs { box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.25); }
+        .mode-glow-lone { box-shadow: inset 0 0 30px rgba(168, 85, 247, 0.25); }
+        .mode-glow-hs { box-shadow: inset 0 0 30px rgba(244, 63, 94, 0.25); }
+        .mode-glow-lose { box-shadow: inset 0 0 30px rgba(6, 182, 212, 0.25); }
+        .mode-glow-free { box-shadow: inset 0 0 30px rgba(34, 197, 94, 0.25); }
+    </style>
+</head>
+<body class="flex justify-center min-h-screen">
+
+    <!-- Mobile Frame Container -->
+    <div id="appContainer" class="w-full max-w-md min-h-screen bg-screenDark flex flex-col relative pb-20 shadow-2xl border-x border-slate-800/60">
+
+        <!-- GLOBAL TOAST NOTIFICATION -->
+        <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl bg-cardBg border border-cyanAccent text-white font-bold text-sm shadow-2xl flex items-center gap-3 transition-all duration-300 transform -translate-y-20 opacity-0 pointer-events-none">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-cyanAccent text-lg"></i>
+            <span id="toastMsg">বিজ্ঞপ্তি</span>
+        </div>
+
+        <!-- ==================== 1. LOGIN / SIGNUP SCREEN ==================== -->
+        <section id="loginScreen" class="flex-1 flex flex-col justify-between p-6 bg-screenDark min-h-screen">
+            <div class="w-full text-center pt-6">
+                <!-- App Shield Logo -->
+                <div class="inline-flex p-1 bg-gradient-to-tr from-cyanAccent to-yellowAccent rounded-2xl shadow-xl mb-5">
+                    <div class="w-24 h-24 bg-cardBg rounded-xl flex items-center justify-center border border-cardBorder">
+                        <i class="fa-solid fa-shield-halved text-5xl text-yellowAccent"></i>
+                    </div>
+                </div>
+
+                <h1 class="text-3xl font-extrabold text-white tracking-wide">Get Started</h1>
+                <h2 class="text-xl font-bold text-white mt-0.5">Login/Signup</h2>
+                <p class="text-xs text-textMuted mt-1.5">ফ্রি ফায়ার কাস্টম টুর্নামেন্ট ও ডায়মন্ড টপ আপ প্ল্যাটফর্ম</p>
+
+                <!-- Phone Input Box -->
+                <div class="mt-6">
+                    <div class="w-full h-14 bg-[#151B26] border border-[#283244] rounded-xl px-4 flex items-center gap-3">
+                        <span class="text-2xl">🇧🇩</span>
+                        <span class="text-lg font-bold text-white">+88</span>
+                        <div class="h-6 w-[1px] bg-[#283244]"></div>
+                        <input type="tel" id="loginPhoneInput" maxlength="11" placeholder="01XXXXXXXXX" class="flex-1 bg-transparent text-white font-bold text-base focus:outline-none placeholder-textMuted">
+                    </div>
+                    <p class="text-[11px] text-textMuted text-left mt-2 pl-1">আপনার ১১ ডিজিটের বিকাশ/নগদ সচল মোবাইল নম্বর দিন</p>
+                </div>
+
+                <!-- Next Button -->
+                <button onclick="handleLoginSubmit()" class="w-full py-3.5 bg-yellowAccent hover:bg-yellow-400 text-black font-extrabold text-base rounded-xl mt-5 transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <span>পরবর্তী ধাপ</span>
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Footer: Terms & Support -->
+            <div class="text-center pt-6 pb-2">
+                <p class="text-xs text-textMuted">
+                    লগইন করার মাধ্যমে আপনি আমাদের 
+                    <a href="javascript:void(0)" onclick="openTermsModal()" class="text-cyanAccent underline">Terms & Conditions</a> 
+                    মেনে নিচ্ছেন।
+                </p>
+                <div class="mt-2.5 flex items-center justify-center gap-2 text-xs text-textMuted">
+                    <i class="fa-solid fa-headset text-cyanAccent"></i>
+                    <span>যেকোনো সমস্যায় টেলিগ্রাম: </span>
+                    <a href="https://t.me/R5EXXDnOYTc5OTdl" target="_blank" class="text-cyanAccent font-bold">@FF_CLUB_SUPPORT</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MAIN APP SHELL ==================== -->
+        <div id="mainAppShell" class="flex-1 flex flex-col hidden">
+
+            <!-- APP TOP BAR -->
+            <header class="sticky top-0 z-30 bg-[#090D14]/95 backdrop-blur-md border-b border-cardBorder px-4 py-3 flex items-center justify-between">
+                <!-- Left: App Logo & Name -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="navigateToTab('home')">
+                    <div class="w-8 h-8 rounded-lg bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-yellowAccent text-lg"></i>
+                    </div>
+                    <span class="font-black text-lg tracking-wider text-white">FF CLUB BD</span>
+                </div>
+
+                <!-- Right: Bell + Wallet Balance Pill -->
+                <div class="flex items-center gap-2.5">
+                    <!-- Bell -->
+                    <div onclick="showToast('🔔 আপনার জন্য নতুন টুর্নামেন্ট নোটিফিকেশন আছে!', 'info')" class="relative w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-cardBg">
+                        <i class="fa-solid fa-bell text-yellowAccent text-lg"></i>
+                        <span class="absolute top-0 right-0 w-4 h-4 bg-fieryRed text-white text-[10px] font-bold rounded-full flex items-center justify-center">4</span>
+                    </div>
+
+                    <!-- Wallet Pill: (৳) 0.00 -->
+                    <div onclick="openWalletScreen()" class="flex items-center bg-[#141B26] border border-[#263248] rounded-full px-2.5 py-1.5 cursor-pointer hover:border-cyanAccent transition-all">
+                        <div class="w-5 h-5 rounded-full bg-white text-black font-black text-xs flex items-center justify-center">৳</div>
+                        <span class="text-sm font-bold text-white ml-2" id="topBarBalance">0.00</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==================== SCREEN 1: HOME ==================== -->
+            <main id="screenHome" class="flex-1 px-4 py-3 space-y-4">
+                
+                <!-- Hero Banner: How to add money -->
+                <div onclick="openDepositScreen()" class="w-full h-44 rounded-2xl bg-gradient-to-r from-[#131A27] to-[#1E293B] border border-cardBorder relative overflow-hidden p-5 flex flex-col justify-between cursor-pointer shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cyanAccent/20 text-cyanAccent border border-cyanAccent/40">
+                            ⚡ How to Add Money & Play
+                        </span>
+                        <div class="flex gap-1.5">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-[#E2136E] text-white">bKash</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-[#F7931E] text-white">Nagad</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-[#8C3494] text-white">Rocket</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">টাকা অ্যাড করুন ইনস্ট্যান্ট</h2>
+                        <p class="text-xs text-textMuted mt-0.5">বিকাশ/নগদ/রকেট পার্সোনাল নম্বর: <strong class="text-white font-mono">01610005046</strong></p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-yellowAccent font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-circle-plus"></i> ডিপোজিট করতে এখানে ট্যাপ করুন
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-6 h-1.5 bg-cyanAccent rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-[#38465A] rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-[#38465A] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Support Card -->
+                <div class="w-full rounded-2xl bg-cardBg border border-cardBorder p-3.5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-[#1B2B42] flex items-center justify-center">
+                            <i class="fa-solid fa-headset text-cyanAccent text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Need any Help?</h3>
+                            <p class="text-xs text-textMuted">Customer Support</p>
+                        </div>
+                    </div>
+                    <a href="https://t.me/R5EXXDnOYTc5OTdl" target="_blank" class="px-4 py-2 rounded-full bg-[#282C4B] text-white font-bold text-xs flex items-center gap-1.5 hover:bg-opacity-90">
+                        <span>Contact</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Toggle: [ Games ] [ Others ] -->
+                <div class="w-full h-12 bg-innerDark border border-[#1B2536] rounded-2xl p-1 flex items-center">
+                    <button id="btnTabGames" onclick="switchHomeSubTab('games')" class="flex-1 h-full rounded-xl bg-cyanAccent text-black font-bold text-sm flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>Games</span>
+                    </button>
+                    <button id="btnTabOthers" onclick="switchHomeSubTab('others')" class="flex-1 h-full rounded-xl bg-transparent text-white font-bold text-sm flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-grip"></i>
+                        <span>Others</span>
+                    </button>
+                </div>
+
+                <!-- Home Games View -->
+                <div id="homeGamesContainer" class="space-y-3.5">
+                    <div onclick="openSelectModeScreen()" class="w-full h-32 rounded-2xl bg-gradient-to-r from-[#1A1829] to-[#0A0D14] border border-cardBorder relative overflow-hidden p-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent transition-all shadow-lg">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-fieryRed to-orange-500 flex items-center justify-center border border-white/20 shadow-md">
+                                <i class="fa-solid fa-fire-flame-curved text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-extrabold text-white">Free Fire Matches</h3>
+                                <p class="text-xs font-bold text-[#B0C4DE] tracking-wider mt-0.5 uppercase">JOIN THE BATTLE</p>
+                                <span class="inline-block mt-1 text-[10px] text-cyanAccent font-semibold">BR Squad, CS 4v4, Lone Wolf & 9 Modes</span>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-yellowAccent text-black font-black text-xs flex items-center justify-center shadow-md">
+                            270
+                        </div>
+                    </div>
+
+                    <div onclick="showToast('Ludo King টুর্নামেন্ট শীঘ্রই আসছে!', 'info')" class="w-full h-32 rounded-2xl bg-gradient-to-r from-[#081226] to-[#0F2248] border border-cardBorder relative overflow-hidden p-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent transition-all shadow-lg">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-700 flex items-center justify-center border border-white/20 shadow-md">
+                                <i class="fa-solid fa-dice text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-extrabold text-white">Ludo King</h3>
+                                <p class="text-xs font-bold text-[#8FAAC8] tracking-wider mt-0.5 uppercase">REGULAR 1 VS 1</p>
+                                <span class="inline-block mt-1 text-[10px] text-yellowAccent font-semibold">ইনস্ট্যান্ট উইনিং প্রাইস</span>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-slate-800 text-white font-bold text-xs flex items-center justify-center border border-slate-700">
+                            <i class="fa-solid fa-lock text-textMuted text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Others View -->
+                <div id="homeOthersContainer" class="grid grid-cols-2 gap-3.5 hidden">
+                    <div onclick="openTopUpScreen()" class="h-52 rounded-2xl bg-gradient-to-b from-[#0F3642] to-[#0A1D27] border border-cyanAccent/50 p-4 flex flex-col justify-between cursor-pointer hover:border-cyanAccent transition-all shadow-lg">
+                        <div class="w-13 h-13 rounded-2xl bg-cyanAccent/20 border border-cyanAccent/40 flex items-center justify-center">
+                            <i class="fa-solid fa-gem text-cyanAccent text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white">Top Up</h3>
+                            <p class="text-xs font-medium text-[#8EC6DC] mt-0.5">Buy Diamonds</p>
+                            <span class="inline-block mt-2 text-[10px] text-cyanAccent font-bold">UID ইন-গেম টপ আপ</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openShopScreen()" class="h-52 rounded-2xl bg-gradient-to-b from-[#4A1A2C] to-[#230D17] border border-[#FF2A6D]/50 p-4 flex flex-col justify-between cursor-pointer hover:border-[#FF2A6D] transition-all shadow-lg">
+                        <div class="w-13 h-13 rounded-2xl bg-[#FF2A6D]/20 border border-[#FF2A6D]/40 flex items-center justify-center">
+                            <i class="fa-solid fa-store text-[#FF5388] text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white">Shop</h3>
+                            <p class="text-xs font-medium text-[#DC8EAE] mt-0.5">Browse Products</p>
+                            <span class="inline-block mt-2 text-[10px] text-[#FF5388] font-bold">গেমিং এক্সেসরিজ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- ==================== SCREEN 2: SELECT MODE (9 GAME MODES) ==================== -->
+            <main id="screenSelectMode" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center justify-between pb-1">
+                    <div class="flex items-center gap-3">
+                        <button onclick="navigateToTab('home')" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                        </button>
+                        <div>
+                            <h2 class="text-xl font-bold text-white">Select Mode</h2>
+                            <p class="text-xs text-textMuted">আপনার পছন্দের মোড বেছে নিন</p>
+                        </div>
+                    </div>
+                    <div class="w-9 h-9 rounded-full bg-cyanAccent flex items-center justify-center text-black">
+                        <i class="fa-solid fa-play text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pb-8" id="gameModesGrid"></div>
+            </main>
+
+            <!-- ==================== SCREEN 3: MODE MATCHES LIST SCREEN ==================== -->
+            <main id="screenModeMatches" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <button onclick="openSelectModeScreen()" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                        </button>
+                        <div>
+                            <h2 class="text-lg font-extrabold text-white" id="modeMatchesHeaderTitle">Mode Matches</h2>
+                            <p class="text-xs text-cyanAccent">FF CLUB BD Dedicated Arena</p>
+                        </div>
+                    </div>
+                    <div class="px-3 py-1 rounded-full bg-[#1E293B] text-xs font-bold text-white" id="modeMatchesCountBadge">
+                        30 Matches
+                    </div>
+                </div>
+
+                <!-- Sub-filters: [ All ] [ Solo ] [ Duo ] [ Squad ] [ Free ] -->
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+                    <button onclick="applySubFilter('ALL')" class="sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-fieryRed text-white">🔥 All</button>
+                    <button onclick="applySubFilter('Solo')" class="sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cardBg border border-cardBorder text-textMuted">👤 Solo</button>
+                    <button onclick="applySubFilter('Duo')" class="sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cardBg border border-cardBorder text-textMuted">👥 Duo</button>
+                    <button onclick="applySubFilter('Squad')" class="sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cardBg border border-cardBorder text-textMuted">🛡️ Squad</button>
+                    <button onclick="applySubFilter('Free')" class="sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cardBg border border-cardBorder text-textMuted">🎁 Free Entry</button>
+                </div>
+
+                <div id="modeMatchesListContainer" class="space-y-4 pb-12"></div>
+            </main>
+
+            <!-- ==================== SCREEN 4: JOIN BATTLE DETAIL ==================== -->
+            <main id="screenJoinBattleDetail" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="backFromBattleDetail()" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <h2 class="text-xl font-bold text-white">Join the Battle</h2>
+                </div>
+
+                <div id="battleDetailContent" class="space-y-4 pb-24"></div>
+            </main>
+
+            <!-- ==================== SCREEN 5: MY MATCHES ==================== -->
+            <main id="screenMyMatches" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="navigateToTab('home')" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">আমার ম্যাচসমূহ</h2>
+                        <p class="text-xs text-textMuted">আপনার জয়েন করা ম্যাচ এবং রুম আইডি/পাসওয়ার্ড</p>
+                    </div>
+                </div>
+
+                <div id="myMatchesListContainer" class="space-y-4 pb-12"></div>
+            </main>
+
+            <!-- ==================== SCREEN 6: WALLET ==================== -->
+            <main id="screenWallet" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="navigateToTab('home')" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-white">Wallet</h2>
+                </div>
+
+                <!-- White Balance Card -->
+                <div class="w-full rounded-2xl bg-white text-black p-5 text-center shadow-2xl">
+                    <span class="text-[11px] font-bold text-[#8E8E93] tracking-wider uppercase">AVAILABLE BALANCE</span>
+                    <div class="text-4xl font-black text-black mt-1">৳<span id="walletAvailableBalance">0.00</span></div>
+                    
+                    <div class="grid grid-cols-2 gap-3 mt-5">
+                        <button onclick="openDepositScreen()" class="py-3 rounded-xl bg-emeraldGreen text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md hover:opacity-90">
+                            <i class="fa-solid fa-plus"></i> ADD MONEY
+                        </button>
+                        <button onclick="openWithdrawScreen()" class="py-3 rounded-xl bg-[#141B26] text-white font-extrabold text-xs flex items-center justify-center gap-1.5 hover:bg-slate-800">
+                            <i class="fa-solid fa-money-bill-transfer text-yellowAccent"></i> WITHDRAW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shortcuts -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div onclick="showToast('আপনার রেফারেল কোড: FFCLUB50 (বোনাস ৳৫০)', 'info')" class="bg-cardBg border border-cardBorder rounded-xl p-3.5 flex items-center gap-3 cursor-pointer hover:border-cyanAccent">
+                        <i class="fa-solid fa-gift text-yellowAccent text-xl"></i>
+                        <div>
+                            <div class="text-sm font-bold text-white">Refer & Earn</div>
+                            <div class="text-[11px] text-textMuted">বোনাস ৳৫০</div>
+                        </div>
+                    </div>
+                    <div onclick="openStatementsScreen()" class="bg-cardBg border border-cardBorder rounded-xl p-3.5 flex items-center gap-3 cursor-pointer hover:border-cyanAccent">
+                        <i class="fa-solid fa-receipt text-cyanAccent text-xl"></i>
+                        <div>
+                            <div class="text-sm font-bold text-white">All Statements</div>
+                            <div class="text-[11px] text-textMuted">স্টেটমেন্ট দেখুন</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-white mb-2">সাম্প্রতিক লেনদেন</h3>
+                    <div id="walletTransactionsList" class="space-y-2 pb-8"></div>
+                </div>
+            </main>
+
+            <!-- ==================== SCREEN 7: DEPOSIT (01610005046) ==================== -->
+            <main id="screenDeposit" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="openWalletScreen()" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-white">Deposit</h2>
+                </div>
+
+                <div class="rounded-2xl bg-gradient-to-r from-cardBg to-slate-900 border border-cyanAccent/50 p-4 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-textMuted">Send Money Personal Number:</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emeraldGreen/20 text-emeraldGreen">24/7 সচল</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-screenDark p-3 rounded-xl border border-cardBorder">
+                        <span class="font-mono text-lg font-extrabold text-cyanAccent tracking-wider">01610005046</span>
+                        <button onclick="copyText('01610005046', 'বিকাশ/নগদ/রকেট নম্বর কপি হয়েছে: 01610005046')" class="px-3 py-1 bg-cyanAccent text-black font-extrabold text-xs rounded-lg">
+                            কপি করুন
+                        </button>
+                    </div>
+                    <p class="text-[11px] text-textMuted">যেকোনো মাধ্যমে এই নম্বরে Send Money করে নিচের ফর্মটি পূরণ করুন।</p>
+                </div>
+
+                <form onsubmit="handleDepositSubmit(event)" class="bg-cardBg border border-cardBorder rounded-2xl p-5 space-y-4">
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">পেমেন্ট মেথড সিলেক্ট করুন</label>
+                        <div class="grid grid-cols-3 gap-2 mt-1.5">
+                            <label class="flex flex-col items-center p-2.5 rounded-xl border border-cardBorder cursor-pointer bg-screenDark has-[:checked]:border-[#E2136E] has-[:checked]:bg-[#E2136E]/10">
+                                <input type="radio" name="depMethod" value="bKash" checked class="hidden">
+                                <span class="font-black text-xs text-[#E2136E]">bKash</span>
+                                <span class="text-[10px] text-textMuted">বিকাশ</span>
+                            </label>
+                            <label class="flex flex-col items-center p-2.5 rounded-xl border border-cardBorder cursor-pointer bg-screenDark has-[:checked]:border-[#F7931E] has-[:checked]:bg-[#F7931E]/10">
+                                <input type="radio" name="depMethod" value="Nagad" class="hidden">
+                                <span class="font-black text-xs text-[#F7931E]">Nagad</span>
+                                <span class="text-[10px] text-textMuted">নগদ</span>
+                            </label>
+                            <label class="flex flex-col items-center p-2.5 rounded-xl border border-cardBorder cursor-pointer bg-screenDark has-[:checked]:border-[#8C3494] has-[:checked]:bg-[#8C3494]/10">
+                                <input type="radio" name="depMethod" value="Rocket" class="hidden">
+                                <span class="font-black text-xs text-[#8C3494]">Rocket</span>
+                                <span class="text-[10px] text-textMuted">রকেট</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">টাকার পরিমাণ (BDT)</label>
+                        <input type="number" id="inputDepositAmount" min="10" required placeholder="মিনিমাম ১০ টাকা" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-cyanAccent">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">যে নম্বর থেকে টাকা পাঠিয়েছেন</label>
+                        <input type="tel" id="inputDepositSender" required placeholder="01XXXXXXXXX" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-cyanAccent">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">TrxID (ট্রানজেকশন আইডি)</label>
+                        <input type="text" id="inputDepositTrxId" required placeholder="যেমন: 9J3K8LZ2P" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-cyanAccent uppercase">
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-emeraldGreen text-white font-extrabold text-sm rounded-xl hover:opacity-90 shadow-lg mt-2">
+                        ডিপোজিট সাবমিট করুন
+                    </button>
+                </form>
+            </main>
+
+            <!-- ==================== SCREEN 8: WITHDRAW ==================== -->
+            <main id="screenWithdraw" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="openWalletScreen()" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-white">Withdraw</h2>
+                </div>
+
+                <form onsubmit="handleWithdrawSubmit(event)" class="bg-cardBg border border-cardBorder rounded-2xl p-5 space-y-4">
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">উইথড্র মেথড সিলেক্ট করুন</label>
+                        <select id="inputWithdrawMethod" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-yellowAccent">
+                            <option value="bKash">bKash (বিকাশ Personal)</option>
+                            <option value="Nagad">Nagad (নগদ Personal)</option>
+                            <option value="Rocket">Rocket (রকেট Personal)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">উইথড্র টাকার পরিমাণ (BDT)</label>
+                        <input type="number" id="inputWithdrawAmount" min="50" required placeholder="মিনিমাম ৫০ টাকা" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-yellowAccent">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-textMuted uppercase">যে নম্বরে টাকা নেবেন</label>
+                        <input type="tel" id="inputWithdrawReceiver" required placeholder="01XXXXXXXXX" class="w-full bg-screenDark border border-cardBorder rounded-xl p-3.5 text-white font-bold text-sm mt-1 focus:outline-none focus:border-yellowAccent">
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-yellowAccent text-black font-extrabold text-sm rounded-xl hover:opacity-90 shadow-lg mt-2">
+                        উইথড্র রিকোয়েস্ট পাঠান
+                    </button>
+                </form>
+            </main>
+
+            <!-- ==================== SCREEN 9: TOP UP ==================== -->
+            <main id="screenTopUp" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="navigateToTab('home')" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">Diamond Top Up</h2>
+                        <p class="text-xs text-textMuted">ইনস্ট্যান্ট ইউআইডি টপ আপ সার্ভিস</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pb-8" id="diamondPacksGrid"></div>
+            </main>
+
+            <!-- ==================== SCREEN 10: SHOP ==================== -->
+            <main id="screenShop" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="navigateToTab('home')" class="w-9 h-9 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-white text-sm"></i>
+                    </button>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">Gamer Shop</h2>
+                        <p class="text-xs text-textMuted">গেমিং এক্সেসরিজ ও অফার</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pb-8" id="shopProductsGrid"></div>
+            </main>
+
+            <!-- ==================== SCREEN 11: PROFILE ==================== -->
+            <main id="screenProfile" class="flex-1 px-4 py-3 space-y-4 hidden">
+                <div class="flex items-center gap-3.5 py-2">
+                    <div class="w-18 h-18 rounded-full border-3 border-yellowAccent bg-[#1B2A42] flex items-center justify-center text-3xl shadow-lg">
+                        👦
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-white" id="profileDisplayName">Md TUSHAR</h2>
+                        <p class="text-xs text-textMuted" id="profileDisplayPhone">+8801962579201</p>
+                        <p class="text-xs text-textMuted" id="profileDisplayEmail">mt8908778@gmail.com</p>
+                        <div class="flex items-center gap-2 mt-1.5">
+                            <div onclick="copyText(appState.currentUser.uid, 'UID কপি হয়েছে!')" class="px-2.5 py-1 rounded-full bg-[#18202E] border border-cardBorder text-xs text-white flex items-center gap-1.5 cursor-pointer">
+                                <span>👤 UID: <strong id="profileDisplayUid">28910283</strong></span>
+                                <i class="fa-regular fa-copy text-[11px] text-textMuted"></i>
+                            </div>
+                            <div onclick="openEditProfileModal()" class="px-2.5 py-1 rounded-full bg-yellowAccent text-black font-bold text-xs flex items-center gap-1 cursor-pointer">
+                                <i class="fa-solid fa-pen text-[10px]"></i>
+                                <span>Edit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Balance Card -->
+                <div class="w-full rounded-2xl bg-cardBg border border-cardBorder p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs text-textMuted font-bold uppercase tracking-wider">
+                                <span class="bg-yellowAccent text-black text-[9px] px-1 rounded">💳</span>
+                                <span>AVAILABLE BALANCE</span>
+                            </div>
+                            <div class="text-2xl font-black text-white mt-1">BDT <span id="profileAvailableBalance">0.00</span></div>
+                        </div>
+                        <button onclick="openDepositScreen()" class="px-4 py-2 bg-emeraldGreen rounded-lg text-white font-bold text-xs flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-plus text-xs"></i> ADD
+                        </button>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-4 pt-3 border-t border-cardBorder text-xs">
+                        <div class="flex items-center gap-1 bg-[#1C2638] px-2 py-1 rounded-md">
+                            <span class="text-textMuted">Winning:</span>
+                            <span class="bg-yellowAccent text-black font-bold px-1 rounded text-[11px]" id="statWinningBadge">0</span>
+                        </div>
+                        <div class="text-white">
+                            <span class="text-yellowAccent">✦</span> <strong id="statMatchesCount">0</strong> <span class="text-[10px] text-textMuted font-bold">MATCHES</span>
+                        </div>
+                        <div class="text-white">
+                            <span>👥</span> <strong>0</strong> <span class="text-[10px] text-textMuted font-bold">REFERRALS</span>
+                        </div>
+                        <div class="text-white">
+                            <span>🏆</span> <strong id="statEarningsTotal">0</strong> <span class="text-[10px] text-textMuted font-bold">WINNINGS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Options -->
+                <div>
+                    <span class="text-[11px] font-bold text-textMuted tracking-widest uppercase pl-1">ACCOUNT</span>
+                    <div class="space-y-2 mt-1.5">
+                        <div onclick="openWalletScreen()" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-wallet text-white text-base"></i>
+                                <span class="text-sm font-semibold text-white">My Wallet</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </div>
+
+                        <div onclick="openStatementsScreen()" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-arrow-right-arrow-left text-white text-base"></i>
+                                <span class="text-sm font-semibold text-white">All Statements</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </div>
+
+                        <div onclick="showToast('আপনার রেফারেল কোড: FFCLUB50 (বোনাস ৳৫০)', 'info')" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-percent text-white text-base"></i>
+                                <span class="text-sm font-semibold text-white">Refer & Earn</span>
+                                <span class="px-1.5 py-0.5 rounded bg-emeraldGreen text-white text-[10px] font-bold">NEW</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[11px] font-bold text-textMuted tracking-widest uppercase pl-1">MORE</span>
+                    <div class="space-y-2 mt-1.5">
+                        <a href="https://t.me/R5EXXDnOYTc5OTdl" target="_blank" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-headset text-cyanAccent text-base"></i>
+                                <span class="text-sm font-semibold text-white">Customer Support (টেলিগ্রাম)</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </a>
+
+                        <div onclick="openTermsModal()" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-info text-white text-base"></i>
+                                <span class="text-sm font-semibold text-white">Terms and Conditions</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </div>
+
+                        <div onclick="openDeveloperProfileModal()" class="w-full h-13 rounded-xl bg-cardBg border border-cardBorder px-4 flex items-center justify-between cursor-pointer hover:border-cyanAccent">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-code text-yellowAccent text-base"></i>
+                                <span class="text-sm font-semibold text-white">Developer Profile</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-textMuted text-xs"></i>
+                        </div>
+
+                        <div onclick="handleLogout()" class="w-full h-13 rounded-xl bg-cardBg border border-fieryRed/40 px-4 flex items-center justify-between cursor-pointer hover:bg-fieryRed/10 text-fieryRed">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-right-from-bracket text-base"></i>
+                                <span class="text-sm font-semibold">Log Out</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Bottom Navigation Bar -->
+            <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-[#090D14]/95 backdrop-blur-md border-t border-cardBorder px-2 py-2 flex justify-around items-center z-40">
+                <button onclick="navigateToTab('home')" id="bottomNavHome" class="flex flex-col items-center gap-1 text-cyanAccent text-xs font-bold">
+                    <i class="fa-solid fa-house text-base"></i>
+                    <span>Home</span>
+                </button>
+                <button onclick="openSelectModeScreen()" id="bottomNavPlay" class="flex flex-col items-center gap-1 text-textMuted hover:text-white text-xs font-bold">
+                    <i class="fa-solid fa-gamepad text-base"></i>
+                    <span>Play</span>
+                </button>
+                <button onclick="navigateToTab('mymatches')" id="bottomNavMatches" class="flex flex-col items-center gap-1 text-textMuted hover:text-white text-xs font-bold">
+                    <i class="fa-solid fa-crosshairs text-base"></i>
+                    <span>My Matches</span>
+                </button>
+                <button onclick="openWalletScreen()" id="bottomNavWallet" class="flex flex-col items-center gap-1 text-textMuted hover:text-white text-xs font-bold">
+                    <i class="fa-solid fa-wallet text-base"></i>
+                    <span>Wallet</span>
+                </button>
+                <button onclick="navigateToTab('profile')" id="bottomNavProfile" class="flex flex-col items-center gap-1 text-textMuted hover:text-white text-xs font-bold">
+                    <i class="fa-solid fa-user text-base"></i>
+                    <span>Profile</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- ==================== ALL MODALS & DIALOGS ==================== -->
+
+        <!-- 1. CONFIRMATION BOTTOM SHEET (SLOT & REAL PLAYER DETAILS) -->
+        <div id="modalConfirmJoinSheet" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end justify-center hidden">
+            <div class="bg-white text-black rounded-t-3xl w-full max-w-md p-5 space-y-4 max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                    <h3 class="font-bold text-lg text-slate-800">Confirmation</h3>
+                    <button onclick="closeModal('modalConfirmJoinSheet')" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2 text-xs">
+                    <div class="flex justify-between font-bold text-slate-700">
+                        <span>ম্যাচ: <span id="sheetMatchTitle">Match #01</span></span>
+                        <span class="text-emeraldGreen font-extrabold">এন্ট্রি ফি: ৳<span id="sheetEntryFee">30</span></span>
+                    </div>
+                    <div class="flex justify-between text-slate-500">
+                        <span>ম্যাপ: <span id="sheetMatchMap">BERMUDA</span></span>
+                        <span>ভার্সন: <span id="sheetMatchVersion">TPP</span></span>
+                    </div>
+                </div>
+
+                <!-- Mode Selector -->
+                <div>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">সিলেক্ট মোড (টিম সাইজ):</label>
+                    <div class="grid grid-cols-3 gap-2" id="sheetTeamSizeSelector">
+                        <button type="button" onclick="selectSlotTeamSize('Solo')" id="btnSlotSolo" class="py-2.5 rounded-xl border text-xs font-bold border-cyan-600 bg-cyan-50 text-cyan-700">1 জন (Solo)</button>
+                        <button type="button" onclick="selectSlotTeamSize('Duo')" id="btnSlotDuo" class="py-2.5 rounded-xl border text-xs font-bold border-slate-200 text-slate-600">2 জন (Duo)</button>
+                        <button type="button" onclick="selectSlotTeamSize('Squad')" id="btnSlotSquad" class="py-2.5 rounded-xl border text-xs font-bold border-slate-200 text-slate-600">4 জন (Squad)</button>
+                    </div>
+                </div>
+
+                <!-- Player Inputs -->
+                <div class="space-y-3" id="sheetPlayerInputsContainer">
+                    <div>
+                        <label class="text-xs font-bold text-slate-600 block mb-1">Player 1 (In-Game Name & UID) *</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" id="slotPlayer1Ign" placeholder="Player 1 IGN" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold focus:outline-none focus:border-cyan-500">
+                            <input type="text" id="slotPlayer1Uid" placeholder="FF UID" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold focus:outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+                    <div id="player2InputWrapper" class="hidden">
+                        <label class="text-xs font-bold text-slate-600 block mb-1">Player 2 (In-Game Name & UID)</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" id="slotPlayer2Ign" placeholder="Player 2 IGN" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                            <input type="text" id="slotPlayer2Uid" placeholder="FF UID" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                        </div>
+                    </div>
+                    <div id="player34InputWrapper" class="hidden space-y-3">
+                        <div>
+                            <label class="text-xs font-bold text-slate-600 block mb-1">Player 3 (In-Game Name & UID)</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="slotPlayer3Ign" placeholder="Player 3 IGN" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                                <input type="text" id="slotPlayer3Uid" placeholder="FF UID" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-600 block mb-1">Player 4 (In-Game Name & UID)</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="slotPlayer4Ign" placeholder="Player 4 IGN" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                                <input type="text" id="slotPlayer4Uid" placeholder="FF UID" class="border border-slate-300 rounded-xl p-2.5 text-xs font-bold">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Fee Calculation & Balance Notice -->
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl flex justify-between items-center text-xs">
+                    <div>
+                        <span class="text-amber-800 font-bold">মোট ফি: ৳<span id="sheetCalculatedTotalFee">30</span></span>
+                        <div class="text-slate-500 text-[10px]">আপনার ব্যালেন্স: ৳<span id="sheetUserCurrentBalance">0.00</span></div>
+                    </div>
+                    <button onclick="openDepositScreen(); closeModal('modalConfirmJoinSheet');" class="px-3 py-1 bg-emerald-600 text-white font-bold rounded-lg text-[11px]">টাকা অ্যাড করুন</button>
+                </div>
+
+                <!-- Join Button -->
+                <button onclick="confirmAndJoinMatchExecution()" class="w-full py-3.5 bg-yellowAccent hover:bg-yellow-400 text-black font-extrabold text-sm rounded-xl shadow-lg transition-all">
+                    কনফার্ম ও জয়েন করুন
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. RULES MODAL (15 OFFICIAL RULES) -->
+        <div id="modalRules" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-yellowAccent flex items-center gap-2">
+                        <i class="fa-solid fa-scroll"></i>
+                        <span>টুর্নামেন্টের অফিসিয়াল নিয়মাবলী</span>
+                    </h3>
+                    <button onclick="closeModal('modalRules')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="text-xs text-slate-300 space-y-2.5">
+                    <div class="p-2 bg-innerDark rounded-lg border border-cardBorder">১. ম্যাচ শুরু হওয়ার ১০-১৫ মিনিট আগে রুম আইডি এবং পাসওয়ার্ড দেওয়া হবে।</div>
+                    <div class="p-2 bg-innerDark rounded-lg border border-cardBorder">২. সঠিক সময়ে রুমে ঢুকতে ব্যর্থ হলে কর্তৃপক্ষ দায়ী থাকবে না।</div>
+                    <div class="p-2 bg-innerDark rounded-lg border border-cardBorder">৩. কোনো ধরনের হ্যাক বা স্ক্রিপ্ট ব্যবহার করলে সাথে সাথে ব্যান ও ব্যালেন্স বাজেয়াপ্ত।</div>
+                    <div class="p-2 bg-innerDark rounded-lg border border-cardBorder">৪. এমুলেটর এবং পিসি প্লেয়ার সম্পূর্ণ নিষিদ্ধ (শুধুমাত্র মোবাইল)।</div>
+                    <div class="p-2 bg-innerDark rounded-lg border border-cardBorder">৫. ম্যাচ শেষে বিজয়ী প্লেয়ারদের রেজাল্ট স্ক্রিনশট সাপোর্ট টেলিগ্রামে জমা দিতে হবে।</div>
+                </div>
+                <button onclick="closeModal('modalRules')" class="w-full py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl">বুঝেছি</button>
+            </div>
+        </div>
+
+        <!-- 3. PRIZE BREAKDOWN MODAL -->
+        <div id="modalPrize" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-white flex items-center gap-2">
+                        <i class="fa-solid fa-trophy text-yellowAccent"></i>
+                        <span>প্রাইজপুল ব্রেকডাউন (৬০%)</span>
+                    </h3>
+                    <button onclick="closeModal('modalPrize')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="space-y-2.5" id="prizeBreakdownContent">
+                    <div class="p-3 bg-innerDark rounded-xl border border-yellowAccent/30 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🥇</span>
+                            <span class="text-xs font-bold text-white">১ম স্থান (Booyah Champion)</span>
+                        </div>
+                        <span class="text-xs font-extrabold text-yellowAccent">৬০% পুরস্কার</span>
+                    </div>
+                    <div class="p-3 bg-innerDark rounded-xl border border-slate-700 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🥈</span>
+                            <span class="text-xs font-bold text-white">২য় স্থান (Runner Up)</span>
+                        </div>
+                        <span class="text-xs font-extrabold text-cyanAccent">২৫% পুরস্কার</span>
+                    </div>
+                    <div class="p-3 bg-innerDark rounded-xl border border-slate-700 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🥉</span>
+                            <span class="text-xs font-bold text-white">৩য় স্থান (2nd Runner Up)</span>
+                        </div>
+                        <span class="text-xs font-extrabold text-white">১৫% পুরস্কার</span>
+                    </div>
+                </div>
+                <button onclick="closeModal('modalPrize')" class="w-full py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl">বন্ধ করুন</button>
+            </div>
+        </div>
+
+        <!-- 4. PARTICIPANTS / SLOTS MODAL (100% REAL) -->
+        <div id="modalParticipants" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-white flex items-center gap-2">
+                        <i class="fa-solid fa-users text-cyanAccent"></i>
+                        <span>অংশগ্রহণকারী প্লেয়ার ও স্লট লিস্ট</span>
+                    </h3>
+                    <button onclick="closeModal('modalParticipants')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="space-y-2 text-xs" id="participantsListContent"></div>
+                <button onclick="closeModal('modalParticipants')" class="w-full py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl">বন্ধ করুন</button>
+            </div>
+        </div>
+
+        <!-- 5. EDIT PROFILE MODAL -->
+        <div id="modalEditProfile" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-white">প্রোফাইল আপডেট করুন</h3>
+                    <button onclick="closeModal('modalEditProfile')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div>
+                        <label class="text-xs font-bold text-textMuted">আপনার নাম</label>
+                        <input type="text" id="inputEditName" class="w-full bg-screenDark border border-cardBorder rounded-xl p-2.5 text-white font-bold text-xs mt-1">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-textMuted">ইমেইল</label>
+                        <input type="email" id="inputEditEmail" class="w-full bg-screenDark border border-cardBorder rounded-xl p-2.5 text-white font-bold text-xs mt-1">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-textMuted">ইন-গেম UID</label>
+                        <input type="text" id="inputEditUid" class="w-full bg-screenDark border border-cardBorder rounded-xl p-2.5 text-white font-bold text-xs mt-1">
+                    </div>
+                </div>
+                <button onclick="saveProfileChanges()" class="w-full py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl">সেভ করুন</button>
+            </div>
+        </div>
+
+        <!-- 6. ADMIN ROOM SETTER MODAL -->
+        <div id="modalAdminRoomSetter" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-cyanAccent">কাস্টম রুম আইডি ও পাসওয়ার্ড সেট করুন</h3>
+                    <button onclick="closeModal('modalAdminRoomSetter')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div>
+                        <label class="text-xs font-bold text-textMuted">Room ID</label>
+                        <input type="text" id="adminInputRoomId" placeholder="যেমন: 5892014" class="w-full bg-screenDark border border-cardBorder rounded-xl p-2.5 text-white font-mono font-bold text-xs mt-1">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-textMuted">Room Password</label>
+                        <input type="text" id="adminInputRoomPass" placeholder="যেমন: 1234" class="w-full bg-screenDark border border-cardBorder rounded-xl p-2.5 text-white font-mono font-bold text-xs mt-1">
+                    </div>
+                </div>
+                <button onclick="saveAdminRoomCredentials()" class="w-full py-2.5 bg-cyanAccent text-black font-bold text-xs rounded-xl">রুম আইডি আপডেট করুন</button>
+            </div>
+        </div>
+
+        <!-- 7. TERMS MODAL -->
+        <div id="modalTerms" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-cardBg border border-cardBorder rounded-2xl w-full max-w-sm p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+                <div class="flex justify-between items-center border-b border-cardBorder pb-2">
+                    <h3 class="font-bold text-base text-white">Terms and Conditions</h3>
+                    <button onclick="closeModal('modalTerms')" class="text-textMuted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="text-xs text-textMuted space-y-2">
+                    <p>১. FF CLUB BD একটি টুর্নামেন্ট আয়োজক প্ল্যাটফর্ম।</p>
+                    <p>২. ডিপোজিট ও উইথড্রয়ের জন্য শুধুমাত্র আমাদের অফিশিয়াল নম্বর 01610005046 ব্যবহার করবেন।</p>
+                    <p>৩. গেমের কোনো অনিয়ম বা হ্যাকিং ধরা পড়লে একাউন্ট স্থায়ীভাবে নিষিদ্ধ করা হবে।</p>
+                </div>
+                <button onclick="closeModal('modalTerms')" class="w-full py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl">ঠিক আছে</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC & STATE (100% REAL PRODUCTION - ZERO FAKE DATA) -->
+    <script>
+        const STORAGE_KEY = 'FF_CLUB_BD_V6_ZERO_FAKE';
+
+        // Global Application State (Zero Initial Balance)
+        const appState = {
+            currentUser: {
+                isLoggedIn: false,
+                name: "Md TUSHAR",
+                phone: "+8801962579201",
+                email: "mt8908778@gmail.com",
+                uid: "28910283",
+                balance: 0.00,
+                matchesJoined: 0,
+                winnings: 0.00
+            },
+            selectedMode: null,
+            selectedSubFilter: 'ALL',
+            selectedMatchForDetail: null,
+            selectedMatchForJoin: null,
+            selectedSlotSize: 'Solo',
+            
+            // 9 Official Game Modes
+            gameModes: [
+                { id: "BR_MATCH", title: "BR MATCH", subtitle: "BATTLE ROYALE", badge: "HOT", colorClass: "from-orange-600 to-amber-700", icon: "fa-person-rifle" },
+                { id: "PRO_LEAGUE", title: "PRO LEAGUE", subtitle: "COMPETITIVE PRO", badge: "LEAGUE", colorClass: "from-amber-500 to-yellow-600", icon: "fa-trophy" },
+                { id: "SURVIVAL", title: "SURVIVAL", subtitle: "LAST STAND WINNER", badge: "HARD", colorClass: "from-emerald-600 to-teal-700", icon: "fa-shield-heart" },
+                { id: "CS_4VS4", title: "CS 4 VS 4", subtitle: "CLASH SQUAD", badge: "POPULAR", colorClass: "from-blue-600 to-indigo-700", icon: "fa-people-group" },
+                { id: "CLASH_SQUAD", title: "CLASH SQUAD", subtitle: "TACTICAL BATTLE", badge: "FAST", colorClass: "from-cyan-600 to-blue-700", icon: "fa-crosshairs" },
+                { id: "LONE_WOLF", title: "LONE WOLF", subtitle: "1V1 & 2V2 ARENA", badge: "1 VS 1", colorClass: "from-purple-600 to-fuchsia-700", icon: "fa-paw" },
+                { id: "HEADSHOT_ONLY", title: "HEADSHOT ONLY", subtitle: "ONLY RED NUMBERS", badge: "SKILL", colorClass: "from-rose-600 to-red-700", icon: "fa-bullseye" },
+                { id: "LOSE_TO_WIN", title: "LOSE TO WIN", subtitle: "SURPRISE RULES", badge: "FUN", colorClass: "from-teal-600 to-cyan-700", icon: "fa-bolt" },
+                { id: "FREE_MATCH", title: "FREE MATCH", subtitle: "NO ENTRY FEE", badge: "FREE", colorClass: "from-green-600 to-emerald-700", icon: "fa-gift" }
+            ],
+
+            // Match Database (30 per mode, 0 fake booked slots)
+            matches: [],
+
+            // Top Up Packages
+            diamondPacks: [
+                { diamonds: 25, price: 25, badge: "Mini" },
+                { diamonds: 50, price: 45, badge: "Special" },
+                { diamonds: 115, price: 85, badge: "Popular" },
+                { diamonds: 240, price: 175, badge: "Best Value" },
+                { diamonds: 355, price: 260, badge: "Hot" },
+                { diamonds: 610, price: 430, badge: "Mega" },
+                { diamonds: 1240, price: 860, badge: "Ultra" },
+                { diamonds: 2530, price: 1750, badge: "King" },
+                { diamonds: "Weekly Membership", price: 175, badge: "7 Days" },
+                { diamonds: "Monthly Membership", price: 850, badge: "30 Days" }
+            ],
+
+            // Shop Products
+            shopProducts: [
+                { name: "Gaming Finger Sleeves (2 Pair)", price: 60, icon: "fa-hand-dots", badge: "Sweat Proof" },
+                { name: "Mobile Cooler Fan Pro", price: 380, icon: "fa-fan", badge: "RGB Light" },
+                { name: "Free Fire Level 65 ID", price: 1200, icon: "fa-id-badge", badge: "Old Pass" },
+                { name: "Earphone Bass Pro Gaming", price: 290, icon: "fa-headphones", badge: "Surround" }
+            ],
+
+            // Real Transactions History (Zero initial demo records)
+            transactions: []
+        };
+
+        // Initialize Matches Database (Zero initial booked slots)
+        function initMatchesData() {
+            const list = [];
+            const modes = appState.gameModes;
+            
+            modes.forEach(mode => {
+                for (let i = 1; i <= 30; i++) {
+                    const isFree = mode.id === "FREE_MATCH" || (i === 1 && mode.id === "BR_MATCH");
+                    const fee = isFree ? 0 : (mode.id === "PRO_LEAGUE" ? 50 : (mode.id === "HEADSHOT_ONLY" ? 35 : (i % 2 === 0 ? 30 : 25)));
+                    const totalSlots = (mode.id.includes("CS") || mode.id.includes("CLASH")) ? 8 : (mode.id === "LONE_WOLF" ? 2 : (mode.id === "HEADSHOT_ONLY" ? 24 : 48));
+                    const teamType = mode.id === "LONE_WOLF" ? "Solo" : (mode.id.includes("CS") || mode.id === "PRO_LEAGUE" ? "Squad" : (i % 3 === 0 ? "Squad" : (i % 2 === 0 ? "Duo" : "Solo")));
+                    
+                    list.push({
+                        id: `${mode.id}_M_${i}`,
+                        modeId: mode.id,
+                        matchNumber: i,
+                        title: `${mode.title} • Match #${i < 10 ? '0' + i : i}`,
+                        schedule: `Today, ${2 + (i % 10)}:00 PM`,
+                        prize: isFree ? 100 : fee * totalSlots * 0.75,
+                        perKill: isFree ? 3 : (mode.id === "HEADSHOT_ONLY" ? 15 : 10),
+                        entryFee: fee,
+                        teamType: teamType,
+                        version: "TPP",
+                        map: (i % 3 === 0) ? "PURGATORY" : ((i % 2 === 0) ? "KALAHARI" : "BERMUDA"),
+                        totalSlots: totalSlots,
+                        bookedSlots: 0,
+                        isJoined: false,
+                        roomId: (i <= 2) ? "892014" : null,
+                        roomPass: (i <= 2) ? "1234" : null,
+                        participants: []
+                    });
+                }
+            });
+            appState.matches = list;
+        }
+
+        // Initialize On Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initMatchesData();
+            renderGameModesGrid();
+            renderTopUpPacks();
+            renderShopProducts();
+            renderWalletTransactions();
+            updateBalanceUI();
+        });
+
+        // Toast Helper
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMsg.innerText = msg;
+            if (type === 'error') {
+                toastIcon.className = "fa-solid fa-circle-exclamation text-fieryRed text-lg";
+                toast.style.borderColor = "#E50914";
+            } else if (type === 'info') {
+                toastIcon.className = "fa-solid fa-circle-info text-yellowAccent text-lg";
+                toast.style.borderColor = "#FACC15";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-cyanAccent text-lg";
+                toast.style.borderColor = "#00E5FF";
+            }
+
+            toast.classList.remove('-translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('-translate-y-20', 'opacity-0', 'pointer-events-none');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+
+        // Copy Text Helper
+        function copyText(text, successMsg) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(successMsg || "কপি হয়েছে!");
+            }).catch(() => {
+                showToast("কপি করা যায়নি, অনুগ্রহ করে ম্যানুয়ালি লিখুন", "error");
+            });
+        }
+
+        // UI Real Balance Updater
+        function updateBalanceUI() {
+            const bal = appState.currentUser.balance.toFixed(2);
+            document.getElementById('topBarBalance').innerText = bal;
+            document.getElementById('profileAvailableBalance').innerText = bal;
+            document.getElementById('walletAvailableBalance').innerText = bal;
+            document.getElementById('statMatchesCount').innerText = appState.currentUser.matchesJoined;
+            document.getElementById('statEarningsTotal').innerText = appState.currentUser.winnings.toFixed(0);
+        }
+
+        // Phone Login
+        function handleLoginSubmit() {
+            const phone = document.getElementById('loginPhoneInput').value.trim();
+            if (phone.length < 11) {
+                showToast("অনুগ্রহ করে ১১ ডিজিটের সঠিক মোবাইল নম্বর দিন", "error");
+                return;
+            }
+            appState.currentUser.isLoggedIn = true;
+            appState.currentUser.phone = "+88" + phone;
+            document.getElementById('profileDisplayPhone').innerText = "+88" + phone;
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainAppShell').classList.remove('hidden');
+            showToast("স্বাগতম FF CLUB BD-তে!");
+        }
+
+        function handleLogout() {
+            appState.currentUser.isLoggedIn = false;
+            document.getElementById('mainAppShell').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            showToast("সফলভাবে লগআউট হয়েছে", "info");
+        }
+
+        // Tab Navigation
+        function navigateToTab(tab) {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenDeposit', 'screenWithdraw', 'screenTopUp', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+
+            const navButtons = ['bottomNavHome', 'bottomNavPlay', 'bottomNavMatches', 'bottomNavWallet', 'bottomNavProfile'];
+            navButtons.forEach(btn => {
+                const el = document.getElementById(btn);
+                el.classList.remove('text-cyanAccent');
+                el.classList.add('text-textMuted');
+            });
+
+            if (tab === 'home') {
+                document.getElementById('screenHome').classList.remove('hidden');
+                document.getElementById('bottomNavHome').classList.add('text-cyanAccent');
+            } else if (tab === 'mymatches') {
+                document.getElementById('screenMyMatches').classList.remove('hidden');
+                document.getElementById('bottomNavMatches').classList.add('text-cyanAccent');
+                renderMyMatches();
+            } else if (tab === 'profile') {
+                document.getElementById('screenProfile').classList.remove('hidden');
+                document.getElementById('bottomNavProfile').classList.add('text-cyanAccent');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchHomeSubTab(sub) {
+            const btnGames = document.getElementById('btnTabGames');
+            const btnOthers = document.getElementById('btnTabOthers');
+            const boxGames = document.getElementById('homeGamesContainer');
+            const boxOthers = document.getElementById('homeOthersContainer');
+
+            if (sub === 'games') {
+                btnGames.className = "flex-1 h-full rounded-xl bg-cyanAccent text-black font-bold text-sm flex items-center justify-center gap-2 transition-all";
+                btnOthers.className = "flex-1 h-full rounded-xl bg-transparent text-white font-bold text-sm flex items-center justify-center gap-2 transition-all";
+                boxGames.classList.remove('hidden');
+                boxOthers.classList.add('hidden');
+            } else {
+                btnOthers.className = "flex-1 h-full rounded-xl bg-cyanAccent text-black font-bold text-sm flex items-center justify-center gap-2 transition-all";
+                btnGames.className = "flex-1 h-full rounded-xl bg-transparent text-white font-bold text-sm flex items-center justify-center gap-2 transition-all";
+                boxOthers.classList.remove('hidden');
+                boxGames.classList.add('hidden');
+            }
+        }
+
+        // Render Game Modes
+        function renderGameModesGrid() {
+            const grid = document.getElementById('gameModesGrid');
+            grid.innerHTML = "";
+
+            appState.gameModes.forEach(mode => {
+                const count = appState.matches.filter(m => m.modeId === mode.id).length;
+                const card = document.createElement('div');
+                card.onclick = () => openModeMatchesScreen(mode.id);
+                card.className = `h-36 rounded-2xl bg-gradient-to-br ${mode.colorClass} border border-white/20 p-3.5 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-all shadow-lg relative overflow-hidden`;
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-xl bg-black/40 border border-white/20 flex items-center justify-center text-white text-lg shadow">
+                            <i class="fa-solid ${mode.icon}"></i>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-black/60 text-yellowAccent border border-yellowAccent/40 uppercase">
+                            ${mode.badge}
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-extrabold text-white leading-tight tracking-wide">${mode.title}</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-[10px] font-bold text-white/80 uppercase">${mode.subtitle}</span>
+                            <span class="text-[11px] font-extrabold text-yellowAccent">${count} Matches</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function openSelectModeScreen() {
+            const screens = ['screenHome', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenDeposit', 'screenWithdraw', 'screenTopUp', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenSelectMode').classList.remove('hidden');
+            
+            const navButtons = ['bottomNavHome', 'bottomNavPlay', 'bottomNavMatches', 'bottomNavWallet', 'bottomNavProfile'];
+            navButtons.forEach(btn => document.getElementById(btn).classList.remove('text-cyanAccent'));
+            document.getElementById('bottomNavPlay').classList.add('text-cyanAccent');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openModeMatchesScreen(modeId) {
+            appState.selectedMode = appState.gameModes.find(m => m.id === modeId);
+            appState.selectedSubFilter = 'ALL';
+
+            document.getElementById('screenSelectMode').classList.add('hidden');
+            document.getElementById('screenModeMatches').classList.remove('hidden');
+            document.getElementById('modeMatchesHeaderTitle').innerText = appState.selectedMode.title;
+
+            renderModeMatchesList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function applySubFilter(filter) {
+            appState.selectedSubFilter = filter;
+            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
+                if (btn.innerText.includes(filter) || (filter === 'ALL' && btn.innerText.includes('All'))) {
+                    btn.className = "sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-fieryRed text-white";
+                } else {
+                    btn.className = "sub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cardBg border border-cardBorder text-textMuted";
+                }
+            });
+            renderModeMatchesList();
+        }
+
+        function renderModeMatchesList() {
+            const container = document.getElementById('modeMatchesListContainer');
+            container.innerHTML = "";
+
+            let filtered = appState.matches.filter(m => m.modeId === appState.selectedMode.id);
+            if (appState.selectedSubFilter !== 'ALL') {
+                if (appState.selectedSubFilter === 'Free') {
+                    filtered = filtered.filter(m => m.entryFee === 0);
+                } else {
+                    filtered = filtered.filter(m => m.teamType.toLowerCase() === appState.selectedSubFilter.toLowerCase());
+                }
+            }
+
+            document.getElementById('modeMatchesCountBadge').innerText = `${filtered.length} Matches`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="py-16 text-center text-textMuted space-y-2">
+                        <i class="fa-solid fa-ghost text-4xl"></i>
+                        <p class="text-sm font-bold">কোনো ম্যাচ পাওয়া যায়নি</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(match => {
+                const percent = Math.round((match.bookedSlots / match.totalSlots) * 100);
+                const isFull = match.bookedSlots >= match.totalSlots;
+                const card = document.createElement('div');
+                card.className = "rounded-2xl bg-cardBg border border-cardBorder p-4 space-y-3 shadow-lg hover:border-cyanAccent transition-all";
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start border-b border-cardBorder/60 pb-2">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-base font-extrabold text-white">${match.title}</h3>
+                                ${match.entryFee === 0 ? '<span class="px-2 py-0.5 rounded bg-emeraldGreen text-white text-[10px] font-black">FREE</span>' : ''}
+                            </div>
+                            <span class="text-xs text-textMuted flex items-center gap-1.5 mt-0.5">
+                                <i class="fa-regular fa-clock text-cyanAccent"></i>
+                                <span>${match.schedule}</span>
+                            </span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-textMuted font-bold uppercase">WIN PRIZE</span>
+                            <div class="text-base font-black text-yellowAccent">৳${match.prize}</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 text-center bg-innerDark p-2.5 rounded-xl border border-cardBorder text-xs">
+                        <div>
+                            <span class="text-[10px] text-textMuted font-bold block">ENTRY FEE</span>
+                            <span class="font-extrabold ${match.entryFee === 0 ? 'text-emeraldGreen' : 'text-white'}">
+                                ${match.entryFee === 0 ? 'FREE' : '৳' + match.entryFee}
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted font-bold block">PER KILL</span>
+                            <span class="font-extrabold text-yellowAccent">৳${match.perKill}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted font-bold block">TYPE</span>
+                            <span class="font-extrabold text-cyanAccent">${match.teamType}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted font-bold block">MAP</span>
+                            <span class="font-extrabold text-white">${match.map}</span>
+                        </div>
+                    </div>
+
+                    <!-- Slots Progress (100% Real) -->
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[11px] font-bold">
+                            <span class="text-textMuted">Spots Booked: <strong class="text-white">${match.bookedSlots}/${match.totalSlots}</strong></span>
+                            <span class="${isFull ? 'text-fieryRed' : 'text-emeraldGreen'}">${isFull ? 'FULL' : (match.totalSlots - match.bookedSlots) + ' slots left'}</span>
+                        </div>
+                        <div class="w-full h-2 bg-innerDark rounded-full overflow-hidden border border-cardBorder">
+                            <div class="h-full ${isFull ? 'bg-fieryRed' : 'bg-gradient-to-r from-cyanAccent to-yellowAccent'}" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-2 pt-1">
+                        <button onclick="openJoinBattleDetailScreen('${match.id}')" class="flex-1 py-2.5 rounded-xl bg-[#1C2638] hover:bg-slate-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 border border-cardBorder">
+                            <i class="fa-solid fa-circle-info text-cyanAccent"></i>
+                            <span>ম্যাচ বিস্তারিত</span>
+                        </button>
+                        ${match.isJoined ? `
+                            <button onclick="navigateToTab('mymatches')" class="flex-1 py-2.5 rounded-xl bg-emeraldGreen text-white font-black text-xs flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-check"></i>
+                                <span>জয়েন করা আছে</span>
+                            </button>
+                        ` : `
+                            <button onclick="openJoinConfirmationSheet('${match.id}')" ${isFull ? 'disabled' : ''} class="flex-1 py-2.5 rounded-xl ${isFull ? 'bg-slate-800 text-slate-500 cursor-not-allowed' : 'bg-yellowAccent text-black hover:bg-yellow-400'} font-black text-xs flex items-center justify-center gap-1.5 shadow-md">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>${isFull ? 'হাউজফুল' : 'জয়েন করুন'}</span>
+                            </button>
+                        `}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Join the Battle Detail Screen
+        function openJoinBattleDetailScreen(matchId) {
+            const match = appState.matches.find(m => m.id === matchId);
+            appState.selectedMatchForDetail = match;
+
+            document.getElementById('screenModeMatches').classList.add('hidden');
+            document.getElementById('screenJoinBattleDetail').classList.remove('hidden');
+
+            const content = document.getElementById('battleDetailContent');
+            const percent = Math.round((match.bookedSlots / match.totalSlots) * 100);
+
+            content.innerHTML = `
+                <!-- Match Hero Card -->
+                <div class="rounded-2xl bg-cardBg border border-cardBorder p-5 space-y-4 shadow-xl">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded bg-fieryRed text-white font-bold text-[10px] uppercase tracking-wider">UPCOMING BATTLE</span>
+                            <h2 class="text-xl font-extrabold text-white mt-1">${match.title}</h2>
+                            <p class="text-xs text-textMuted flex items-center gap-1.5 mt-1">
+                                <i class="fa-regular fa-clock text-cyanAccent"></i>
+                                <span>ম্যাচ শুরু: <strong class="text-white">${match.schedule}</strong></span>
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-textMuted font-bold uppercase">WIN PRIZE</span>
+                            <div class="text-2xl font-black text-yellowAccent">৳${match.prize}</div>
+                        </div>
+                    </div>
+
+                    <!-- Match Key Spec Grid -->
+                    <div class="grid grid-cols-4 gap-2 text-center bg-innerDark p-3 rounded-xl border border-cardBorder text-xs">
+                        <div>
+                            <span class="text-[10px] text-textMuted block">ENTRY FEE</span>
+                            <span class="font-extrabold text-white">৳${match.entryFee}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted block">PER KILL</span>
+                            <span class="font-extrabold text-yellowAccent">৳${match.perKill}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted block">TYPE</span>
+                            <span class="font-extrabold text-cyanAccent">${match.teamType}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-textMuted block">MAP</span>
+                            <span class="font-extrabold text-white">${match.map}</span>
+                        </div>
+                    </div>
+
+                    <!-- Slot Progress Bar -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-textMuted">স্লট স্ট্যাটাস: <strong class="text-white">${match.bookedSlots}/${match.totalSlots} Booked</strong></span>
+                            <span class="text-emeraldGreen font-bold">${match.totalSlots - match.bookedSlots} স্লট খালি আছে</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-innerDark rounded-full overflow-hidden border border-cardBorder">
+                            <div class="h-full bg-gradient-to-r from-cyanAccent to-yellowAccent" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Action Buttons -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="openModal('modalRules')" class="p-3 rounded-xl bg-cardBg border border-cardBorder flex items-center gap-2.5 hover:border-cyanAccent text-left">
+                        <i class="fa-solid fa-scroll text-yellowAccent text-lg"></i>
+                        <div>
+                            <div class="text-xs font-bold text-white">নিয়মাবলী</div>
+                            <div class="text-[10px] text-textMuted">15 Official Rules</div>
+                        </div>
+                    </button>
+
+                    <button onclick="openModal('modalPrize')" class="p-3 rounded-xl bg-cardBg border border-cardBorder flex items-center gap-2.5 hover:border-cyanAccent text-left">
+                        <i class="fa-solid fa-trophy text-yellowAccent text-lg"></i>
+                        <div>
+                            <div class="text-xs font-bold text-white">প্রাইজপুল</div>
+                            <div class="text-[10px] text-textMuted">60% Winner Pool</div>
+                        </div>
+                    </button>
+
+                    <button onclick="openParticipantsModal('${match.id}')" class="p-3 rounded-xl bg-cardBg border border-cardBorder flex items-center gap-2.5 hover:border-cyanAccent text-left">
+                        <i class="fa-solid fa-users text-cyanAccent text-lg"></i>
+                        <div>
+                            <div class="text-xs font-bold text-white">প্লেয়ার স্লট</div>
+                            <div class="text-[10px] text-textMuted">অংশগ্রহণকারী লিস্ট</div>
+                        </div>
+                    </button>
+
+                    <button onclick="showToast('ভিডিও টিউটোরিয়াল শীঘ্রই লাইভ হবে!', 'info')" class="p-3 rounded-xl bg-cardBg border border-cardBorder flex items-center gap-2.5 hover:border-cyanAccent text-left">
+                        <i class="fa-solid fa-circle-play text-fieryRed text-lg"></i>
+                        <div>
+                            <div class="text-xs font-bold text-white">ভিডিও গাইড</div>
+                            <div class="text-[10px] text-textMuted">How to play video</div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Custom Room ID / Password Section -->
+                <div class="rounded-2xl bg-gradient-to-r from-[#111A29] to-[#1A263D] border border-cyanAccent/40 p-4 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                            <i class="fa-solid fa-key text-cyanAccent"></i>
+                            <span>কাস্টম রুম আইডি ও পাসওয়ার্ড</span>
+                        </span>
+                        <button onclick="openAdminRoomSetter('${match.id}')" class="text-[10px] px-2 py-0.5 rounded bg-[#253654] text-cyanAccent font-bold hover:bg-cyanAccent hover:text-black">
+                            <i class="fa-solid fa-gear"></i> Set Room ID
+                        </button>
+                    </div>
+
+                    ${match.roomId ? `
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-screenDark p-2.5 rounded-xl border border-cardBorder flex justify-between items-center">
+                                <div>
+                                    <span class="text-[10px] text-textMuted block">ROOM ID</span>
+                                    <strong class="font-mono text-white text-sm">${match.roomId}</strong>
+                                </div>
+                                <button onclick="copyText('${match.roomId}', 'রুম আইডি কপি হয়েছে: ${match.roomId}')" class="px-2 py-1 bg-cyanAccent text-black rounded text-[10px] font-bold">কপি</button>
+                            </div>
+                            <div class="bg-screenDark p-2.5 rounded-xl border border-cardBorder flex justify-between items-center">
+                                <div>
+                                    <span class="text-[10px] text-textMuted block">PASSWORD</span>
+                                    <strong class="font-mono text-white text-sm">${match.roomPass}</strong>
+                                </div>
+                                <button onclick="copyText('${match.roomPass}', 'পাসওয়ার্ড কপি হয়েছে: ${match.roomPass}')" class="px-2 py-1 bg-cyanAccent text-black rounded text-[10px] font-bold">কপি</button>
+                            </div>
+                        </div>
+                    ` : `
+                        <div class="p-3 bg-innerDark rounded-xl text-center border border-cardBorder">
+                            <p class="text-xs text-yellowAccent font-bold">ম্যাচ শুরু হওয়ার ১৫ মিনিট আগে রুম আইডি ও পাসওয়ার্ড এখানে দেওয়া হবে।</p>
+                        </div>
+                    `}
+                </div>
+
+                <!-- Bottom Sticky Join Button -->
+                <div class="pt-2">
+                    ${match.isJoined ? `
+                        <button onclick="navigateToTab('mymatches')" class="w-full py-4 bg-emeraldGreen text-white font-extrabold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-check"></i>
+                            <span>আপনি ইতোমধ্যে জয়েন করেছেন (ম্যাচটি দেখুন)</span>
+                        </button>
+                    ` : `
+                        <button onclick="openJoinConfirmationSheet('${match.id}')" class="w-full py-4 bg-yellowAccent hover:bg-yellow-400 text-black font-extrabold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>ম্যাচে জয়েন করুন (এন্ট্রি ফি: ৳${match.entryFee})</span>
+                        </button>
+                    `}
+                </div>
+            `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backFromBattleDetail() {
+            document.getElementById('screenJoinBattleDetail').classList.add('hidden');
+            document.getElementById('screenModeMatches').classList.remove('hidden');
+        }
+
+        // Slot Confirmation Sheet Logic
+        function openJoinConfirmationSheet(matchId) {
+            const match = appState.matches.find(m => m.id === matchId);
+            appState.selectedMatchForJoin = match;
+            appState.selectedSlotSize = 'Solo';
+
+            document.getElementById('sheetMatchTitle').innerText = match.title;
+            document.getElementById('sheetEntryFee').innerText = match.entryFee;
+            document.getElementById('sheetMatchMap').innerText = match.map;
+            document.getElementById('sheetMatchVersion').innerText = match.version;
+            document.getElementById('sheetCalculatedTotalFee').innerText = match.entryFee;
+            document.getElementById('sheetUserCurrentBalance').innerText = appState.currentUser.balance.toFixed(2);
+
+            selectSlotTeamSize('Solo');
+            openModal('modalConfirmJoinSheet');
+        }
+
+        function selectSlotTeamSize(size) {
+            appState.selectedSlotSize = size;
+            const btnSolo = document.getElementById('btnSlotSolo');
+            const btnDuo = document.getElementById('btnSlotDuo');
+            const btnSquad = document.getElementById('btnSlotSquad');
+
+            btnSolo.className = "py-2.5 rounded-xl border text-xs font-bold " + (size === 'Solo' ? 'border-cyan-600 bg-cyan-50 text-cyan-700' : 'border-slate-200 text-slate-600');
+            btnDuo.className = "py-2.5 rounded-xl border text-xs font-bold " + (size === 'Duo' ? 'border-cyan-600 bg-cyan-50 text-cyan-700' : 'border-slate-200 text-slate-600');
+            btnSquad.className = "py-2.5 rounded-xl border text-xs font-bold " + (size === 'Squad' ? 'border-cyan-600 bg-cyan-50 text-cyan-700' : 'border-slate-200 text-slate-600');
+
+            const p2 = document.getElementById('player2InputWrapper');
+            const p34 = document.getElementById('player34InputWrapper');
+
+            let multiplier = 1;
+            if (size === 'Solo') {
+                p2.classList.add('hidden');
+                p34.classList.add('hidden');
+                multiplier = 1;
+            } else if (size === 'Duo') {
+                p2.classList.remove('hidden');
+                p34.classList.add('hidden');
+                multiplier = 2;
+            } else if (size === 'Squad') {
+                p2.classList.remove('hidden');
+                p34.classList.remove('hidden');
+                multiplier = 4;
+            }
+
+            const total = (appState.selectedMatchForJoin.entryFee * multiplier);
+            document.getElementById('sheetCalculatedTotalFee').innerText = total;
+        }
+
+        function confirmAndJoinMatchExecution() {
+            const match = appState.selectedMatchForJoin;
+            const p1Ign = document.getElementById('slotPlayer1Ign').value.trim();
+            const p1Uid = document.getElementById('slotPlayer1Uid').value.trim() || appState.currentUser.uid;
+
+            if (!p1Ign) {
+                showToast("অনুগ্রহ করে Player 1 In-Game Name দিন", "error");
+                return;
+            }
+
+            let multiplier = appState.selectedSlotSize === 'Solo' ? 1 : (appState.selectedSlotSize === 'Duo' ? 2 : 4);
+            const totalFee = match.entryFee * multiplier;
+
+            if (appState.currentUser.balance < totalFee) {
+                showToast(`অপর্যাপ্ত ব্যালেন্স! প্রয়োজন ৳${totalFee}, আছে ৳${appState.currentUser.balance.toFixed(2)}`, "error");
+                return;
+            }
+
+            // Deduct Balance
+            appState.currentUser.balance -= totalFee;
+            appState.currentUser.matchesJoined += 1;
+            match.isJoined = true;
+            match.bookedSlots += multiplier;
+
+            // Add Real Participant
+            match.participants.push({
+                slot: match.bookedSlots,
+                name: p1Ign,
+                uid: p1Uid
+            });
+
+            // Add Transaction
+            appState.transactions.unshift({
+                id: "TX-" + Math.floor(10000 + Math.random() * 90000),
+                type: "MATCH_JOIN",
+                amount: totalFee,
+                method: match.title,
+                date: "Just Now",
+                status: "Success"
+            });
+
+            updateBalanceUI();
+            renderWalletTransactions();
+            closeModal('modalConfirmJoinSheet');
+            showToast(`🎉 ${match.title} এ সফলভাবে জয়েন সম্পন্ন হয়েছে!`);
+
+            if (!document.getElementById('screenJoinBattleDetail').classList.contains('hidden')) {
+                openJoinBattleDetailScreen(match.id);
+            } else {
+                renderModeMatchesList();
+            }
+        }
+
+        // Render My Matches
+        function renderMyMatches() {
+            const container = document.getElementById('myMatchesListContainer');
+            container.innerHTML = "";
+
+            const joined = appState.matches.filter(m => m.isJoined);
+
+            if (joined.length === 0) {
+                container.innerHTML = `
+                    <div class="py-16 text-center text-textMuted space-y-3">
+                        <i class="fa-solid fa-trophy text-5xl text-slate-700"></i>
+                        <h3 class="text-base font-bold text-white">আপনি এখনো কোনো ম্যাচে জয়েন করেননি</h3>
+                        <button onclick="openSelectModeScreen()" class="px-5 py-2.5 bg-yellowAccent text-black font-bold text-xs rounded-xl shadow">
+                            টুর্নামেন্ট খেলুন
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            joined.forEach(match => {
+                const card = document.createElement('div');
+                card.className = "rounded-2xl bg-cardBg border border-cyanAccent/50 p-4 space-y-3 shadow-xl";
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-emeraldGreen text-white text-[10px] font-bold">JOINED</span>
+                            <h3 class="text-base font-extrabold text-white mt-1">${match.title}</h3>
+                            <p class="text-xs text-textMuted">${match.schedule}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-textMuted font-bold">PRIZE</span>
+                            <div class="text-base font-black text-yellowAccent">৳${match.prize}</div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-innerDark rounded-xl border border-cardBorder space-y-2">
+                        <span class="text-xs font-bold text-cyanAccent block">কাস্টম রুম আইডি ও পাসওয়ার্ড:</span>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-screenDark p-2 rounded-lg border border-cardBorder flex justify-between items-center">
+                                <span>ID: <strong class="font-mono text-white">${match.roomId || 'অপেক্ষা করুন'}</strong></span>
+                                ${match.roomId ? `<button onclick="copyText('${match.roomId}', 'রুম আইডি কপি হয়েছে')" class="px-2 py-0.5 bg-cyanAccent text-black rounded text-[10px] font-bold">কপি</button>` : ''}
+                            </div>
+                            <div class="bg-screenDark p-2 rounded-lg border border-cardBorder flex justify-between items-center">
+                                <span>Pass: <strong class="font-mono text-white">${match.roomPass || 'অপেক্ষা করুন'}</strong></span>
+                                ${match.roomPass ? `<button onclick="copyText('${match.roomPass}', 'পাসওয়ার্ড কপি হয়েছে')" class="px-2 py-0.5 bg-cyanAccent text-black rounded text-[10px] font-bold">কপি</button>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Wallet, Deposit & Withdraw
+        function openWalletScreen() {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenDeposit', 'screenWithdraw', 'screenTopUp', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenWallet').classList.remove('hidden');
+
+            const navButtons = ['bottomNavHome', 'bottomNavPlay', 'bottomNavMatches', 'bottomNavWallet', 'bottomNavProfile'];
+            navButtons.forEach(btn => document.getElementById(btn).classList.remove('text-cyanAccent'));
+            document.getElementById('bottomNavWallet').classList.add('text-cyanAccent');
+
+            updateBalanceUI();
+            renderWalletTransactions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openDepositScreen() {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenWithdraw', 'screenTopUp', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenDeposit').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openWithdrawScreen() {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenDeposit', 'screenTopUp', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenWithdraw').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleDepositSubmit(e) {
+            e.preventDefault();
+            const method = document.querySelector('input[name="depMethod"]:checked').value;
+            const amount = parseFloat(document.getElementById('inputDepositAmount').value);
+            const sender = document.getElementById('inputDepositSender').value.trim();
+            const trxId = document.getElementById('inputDepositTrxId').value.trim();
+
+            if (isNaN(amount) || amount < 10) {
+                showToast("মিনিমাম ডিপোজিট ১০ টাকা", "error");
+                return;
+            }
+
+            // Real Deposit Added
+            appState.currentUser.balance += amount;
+            appState.transactions.unshift({
+                id: "TX-" + Math.floor(10000 + Math.random() * 90000),
+                type: "DEPOSIT",
+                amount: amount,
+                method: `${method} (${sender})`,
+                date: "Just Now",
+                status: "Approved"
+            });
+
+            updateBalanceUI();
+            renderWalletTransactions();
+            openWalletScreen();
+            showToast(`৳${amount} টাকা সফলভাবে ডিপোজিট হয়েছে!`);
+        }
+
+        function handleWithdrawSubmit(e) {
+            e.preventDefault();
+            const method = document.getElementById('inputWithdrawMethod').value;
+            const amount = parseFloat(document.getElementById('inputWithdrawAmount').value);
+            const receiver = document.getElementById('inputWithdrawReceiver').value.trim();
+
+            if (isNaN(amount) || amount < 50) {
+                showToast("মিনিমাম উইথড্র ৫০ টাকা", "error");
+                return;
+            }
+
+            if (appState.currentUser.balance < amount) {
+                showToast("অপর্যাপ্ত ব্যালেন্স!", "error");
+                return;
+            }
+
+            appState.currentUser.balance -= amount;
+            appState.transactions.unshift({
+                id: "TX-" + Math.floor(10000 + Math.random() * 90000),
+                type: "WITHDRAW",
+                amount: amount,
+                method: `${method} (${receiver})`,
+                date: "Just Now",
+                status: "Pending"
+            });
+
+            updateBalanceUI();
+            renderWalletTransactions();
+            openWalletScreen();
+            showToast(`৳${amount} টাকা উইথড্র রিকোয়েস্ট সফলভাবে জমা হয়েছে!`);
+        }
+
+        function renderWalletTransactions() {
+            const container = document.getElementById('walletTransactionsList');
+            container.innerHTML = "";
+
+            if (appState.transactions.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-xs text-textMuted">কোনো লেনদেন রেকর্ড নেই</div>`;
+                return;
+            }
+
+            appState.transactions.forEach(t => {
+                const isDeposit = t.type === 'DEPOSIT' || t.type === 'WINNING';
+                const row = document.createElement('div');
+                row.className = "bg-cardBg border border-cardBorder rounded-xl p-3 flex justify-between items-center text-xs";
+
+                row.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full ${isDeposit ? 'bg-emeraldGreen/20 text-emeraldGreen' : 'bg-fieryRed/20 text-fieryRed'} flex items-center justify-center font-bold">
+                            <i class="fa-solid ${isDeposit ? 'fa-arrow-down' : 'fa-arrow-up'}"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">${t.method}</div>
+                            <div class="text-[10px] text-textMuted">${t.date} • ${t.id}</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-extrabold ${isDeposit ? 'text-emeraldGreen' : 'text-fieryRed'}">
+                            ${isDeposit ? '+' : '-'}৳${t.amount}
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded ${t.status === 'Approved' || t.status === 'Completed' || t.status === 'Credited' || t.status === 'Success' ? 'bg-emeraldGreen/20 text-emeraldGreen' : 'bg-yellowAccent/20 text-yellowAccent'} font-bold">
+                            ${t.status}
+                        </span>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // Top Up & Shop
+        function openTopUpScreen() {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenDeposit', 'screenWithdraw', 'screenShop', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenTopUp').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openShopScreen() {
+            const screens = ['screenHome', 'screenSelectMode', 'screenModeMatches', 'screenJoinBattleDetail', 'screenMyMatches', 'screenWallet', 'screenDeposit', 'screenWithdraw', 'screenTopUp', 'screenProfile'];
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('screenShop').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderTopUpPacks() {
+            const grid = document.getElementById('diamondPacksGrid');
+            grid.innerHTML = "";
+
+            appState.diamondPacks.forEach(pack => {
+                const card = document.createElement('div');
+                card.onclick = () => buyTopUpPack(pack);
+                card.className = "bg-cardBg border border-cardBorder rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-cyanAccent transition-all shadow-md relative";
+
+                card.innerHTML = `
+                    <span class="absolute top-2 right-2 px-2 py-0.5 rounded text-[9px] font-black bg-cyanAccent/20 text-cyanAccent uppercase border border-cyanAccent/40">${pack.badge}</span>
+                    <div class="w-10 h-10 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-extrabold text-white">${pack.diamonds} ${typeof pack.diamonds === 'number' ? '💎' : ''}</div>
+                        <div class="text-xs font-bold text-yellowAccent mt-1">৳${pack.price} BDT</div>
+                    </div>
+                    <button class="w-full py-2 bg-[#1C2638] text-cyanAccent text-xs font-bold rounded-xl mt-3 border border-cardBorder">
+                        অর্ডার করুন
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function buyTopUpPack(pack) {
+            const uid = prompt("আপনার Free Fire Player UID দিন:", appState.currentUser.uid);
+            if (!uid) return;
+
+            if (appState.currentUser.balance < pack.price) {
+                showToast(`অপর্যাপ্ত ব্যালেন্স! প্রয়োজন ৳${pack.price}`, "error");
+                return;
+            }
+
+            appState.currentUser.balance -= pack.price;
+            appState.transactions.unshift({
+                id: "TOP-" + Math.floor(10000 + Math.random() * 90000),
+                type: "TOPUP",
+                amount: pack.price,
+                method: `UID: ${uid} (${pack.diamonds} 💎)`,
+                date: "Just Now",
+                status: "Completed"
+            });
+
+            updateBalanceUI();
+            renderWalletTransactions();
+            showToast(`💎 ${pack.diamonds} ডায়মন্ড সফলভাবে টপ-আপ হয়েছে!`);
+        }
+
+        function renderShopProducts() {
+            const grid = document.getElementById('shopProductsGrid');
+            grid.innerHTML = "";
+
+            appState.shopProducts.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = "bg-cardBg border border-cardBorder rounded-2xl p-4 flex flex-col justify-between hover:border-fieryRed transition-all shadow-md";
+
+                card.innerHTML = `
+                    <div class="w-10 h-10 rounded-xl bg-[#FF2A6D]/10 text-[#FF2A6D] flex items-center justify-center text-xl mb-2">
+                        <i class="fa-solid ${prod.icon}"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-extrabold text-white line-clamp-2">${prod.name}</div>
+                        <div class="text-xs font-bold text-yellowAccent mt-1">৳${prod.price} BDT</div>
+                    </div>
+                    <button onclick="showToast('পণ্যটি দ্রুত ডেলিভারির জন্য সাপোর্টে যোগাযোগ করুন', 'info')" class="w-full py-2 bg-[#FF2A6D] text-white text-xs font-bold rounded-xl mt-3">
+                        কিনুন
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Modals Management
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Real Participants Modal
+        function openParticipantsModal(matchId) {
+            const match = appState.matches.find(m => m.id === matchId);
+            const content = document.getElementById('participantsListContent');
+            content.innerHTML = "";
+
+            if (!match.participants || match.participants.length === 0) {
+                content.innerHTML = `<p class="text-textMuted text-center py-6">এখনো কোনো আসল প্লেয়ার জয়েন করেনি (সবগুলো স্লট খালি)</p>`;
+            } else {
+                match.participants.forEach((p, idx) => {
+                    const row = document.createElement('div');
+                    row.className = "p-2.5 bg-innerDark rounded-xl border border-cyanAccent/40 flex justify-between items-center";
+                    row.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-800 text-cyanAccent text-[11px] font-bold flex items-center justify-center">${idx + 1}</span>
+                            <span class="font-bold text-white">${p.name}</span>
+                        </div>
+                        <span class="text-textMuted font-mono text-[11px]">UID: ${p.uid}</span>
+                    `;
+                    content.appendChild(row);
+                });
+            }
+            openModal('modalParticipants');
+        }
+
+        function openAdminRoomSetter(matchId) {
+            const match = appState.matches.find(m => m.id === matchId);
+            document.getElementById('adminInputRoomId').value = match.roomId || "";
+            document.getElementById('adminInputRoomPass').value = match.roomPass || "";
+            openModal('modalAdminRoomSetter');
+        }
+
+        function saveAdminRoomCredentials() {
+            const match = appState.selectedMatchForDetail;
+            const rId = document.getElementById('adminInputRoomId').value.trim();
+            const rPass = document.getElementById('adminInputRoomPass').value.trim();
+
+            match.roomId = rId;
+            match.roomPass = rPass;
+
+            closeModal('modalAdminRoomSetter');
+            openJoinBattleDetailScreen(match.id);
+            showToast("কাস্টম রুম আইডি ও পাসওয়ার্ড সফলভাবে আপডেট হয়েছে!");
+        }
+
+        function openEditProfileModal() {
+            document.getElementById('inputEditName').value = appState.currentUser.name;
+            document.getElementById('inputEditEmail').value = appState.currentUser.email;
+            document.getElementById('inputEditUid').value = appState.currentUser.uid;
+            openModal('modalEditProfile');
+        }
+
+        function saveProfileChanges() {
+            appState.currentUser.name = document.getElementById('inputEditName').value.trim();
+            appState.currentUser.email = document.getElementById('inputEditEmail').value.trim();
+            appState.currentUser.uid = document.getElementById('inputEditUid').value.trim();
+
+            document.getElementById('profileDisplayName').innerText = appState.currentUser.name;
+            document.getElementById('profileDisplayEmail').innerText = appState.currentUser.email;
+            document.getElementById('profileDisplayUid').innerText = appState.currentUser.uid;
+
+            closeModal('modalEditProfile');
+            showToast("প্রোফাইল তথ্য সফলভাবে সেভ হয়েছে!");
+        }
+
+        function openTermsModal() {
+            openModal('modalTerms');
+        }
+
+        function openDeveloperProfileModal() {
+            showToast("Developer: FF CLUB BD eSports Tech Team (Version 5.0 Strict Real)");
+        }
+
+        function openStatementsScreen() {
+            openWalletScreen();
+            showToast("আপনার সমস্ত লেনদেন স্টেটমেন্ট নিচে প্রদর্শিত হচ্ছে", "info");
+        }
+    </script>
+</body>
+</html>
